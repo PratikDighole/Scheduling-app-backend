@@ -24,5 +24,5 @@ app.use((req,res)=>{
 const PORT=process.env.PORT||3000
 
 app.listen(PORT,()=>{
-  res.send(`Server Listening at ${PORT}`)
+  console.log("Server Listening ")
 })
