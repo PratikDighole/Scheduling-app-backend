@@ -1,11 +1,13 @@
 const express=require('express')
 const mongoose=require('mongoose')
 const app=express();
+app.use(express.json())
 
-
-mongoose.connect('mongodb+srv://sandbox.jcpp0.mongodb.net/?retryWrites=true&w=majority',{
+mongoose.connect('mongodb+srv://sandbox.jcpp0.mongodb.net',{
     
-   
+    dbName:'raag_api_data',
+    user:'atharav345',
+    pass:'lmn123',
     useNewUrlParser:true,
     useUnifiedTopology:true
 }).then(()=>{
@@ -23,6 +25,6 @@ app.use((req,res)=>{
 })
 
 
-app.listen(3001,()=>{
+app.listen(3000,()=>{
   console.log("Server Listening at 3000..")
 })
