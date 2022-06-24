@@ -20,7 +20,9 @@ app.use((req,res)=>{
 })
 
 const PORT=process.env.PORT||3000
-
+app.get('/', (req, res) => {
+  res.send(`Server running at ${PORT}  `)
+})
 app.listen(PORT,()=>{
-  console.log("Server Listening ")
+  console.log(`Server Listening at ${PORT}`)
 })
