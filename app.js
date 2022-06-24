@@ -1,19 +1,11 @@
 const express=require('express')
 const mongoose=require('mongoose')
+const createError=require('http-errors')
 const app=express();
 app.use(express.json())
 
-mongoose.connect('mongodb+srv://sandbox.jcpp0.mongodb.net',{
-    
-    dbName:'raag_api_data',
-    user:'atharav345',
-    pass:'lmn123',
-    useNewUrlParser:true,
-    useUnifiedTopology:true
-}).then(()=>{
-    console.log('Mongodb connected...')
-})
-
+//Initialize DB
+require('./initDB')()
 
 //for raagas route
 const RaagasRoutes=require('./Routes/raaga.routes')
