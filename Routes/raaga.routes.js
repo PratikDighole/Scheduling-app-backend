@@ -44,16 +44,41 @@ router.post('/',async(req,res)=>{
     // .catch(err=>console.log(err.message))
    
 })
-
-router.get('/:id',(req,res)=>{
-    res.status(200).send('Getting a single raag with id')
+//Get a single Raag with its name
+router.get('/:name',async(req,res)=>{
+    const single_raag=req.params.name
+    try {
+        const raag=await Raag.findOne({name:single_raag})
+        res.send(raag)
+    } catch (error) {
+        console.log(error.message)
+    }
 })
 
-router.patch('/:id',(req,res)=>{
-    res.status(200).send('Updating a single raag with id')
+//Update Raag with it's Name
+router.patch('/:name',async(req,res)=>{
+   
+    try {
+        const update_name=req.params.name;
+        const updates=req.body
+        const options={new:true}
+        const result_update=await Raag.findOneAndUpdate({name:update_name},updates,options)
+        res.send(result_update)
+    } catch (error) {
+        console.log(error.message)
+    }
 })
-router.delete('/:id',(req,res)=>{
-    res.status(200).send("Deleting a single raag with id")
+
+
+//Delete a Single Raag by it's Name
+router.delete('/:name',async(req,res)=>{
+    const name=req.params.name
+    try {
+        const answer=await Raag.findOneAndDelete({name:name})
+        res.send(answer)
+    } catch (error) {
+        console.log(error.message)
+    }
 })
 
 
