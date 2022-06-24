@@ -1,6 +1,8 @@
 const express=require('express')
 const mongoose=require('mongoose')
+const RaagasRoutes=require('./Routes/raaga.routes')
 const createError=require('http-errors')
+const dotenv=require('dotenv').config()
 const app=express();
 app.use(express.json())
 
@@ -8,7 +10,7 @@ app.use(express.json())
 require('./initDB')()
 
 //for raagas route
-const RaagasRoutes=require('./Routes/raaga.routes')
+
 app.use('/raagas',RaagasRoutes);
 
 //for route which doesn't exist
@@ -16,7 +18,8 @@ app.use((req,res)=>{
     res.status(404).send("Error: Not Found")
 })
 
+const PORT=process.env.PORT||3000
 
-app.listen(3000,()=>{
-  console.log("Server Listening at 3000..")
+app.listen(PORT,()=>{
+  console.log(`Server Listening at ${PORT}`)
 })
