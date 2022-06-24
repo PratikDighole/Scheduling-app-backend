@@ -9,9 +9,7 @@ app.use(express.json())
 //Initialize DB
 require('./initDB')()
 
-app.use('/',(req,res)=>{
-  res.send("Deployed ")
-})
+
 //for raagas route
 
 app.use('/raagas',RaagasRoutes);
