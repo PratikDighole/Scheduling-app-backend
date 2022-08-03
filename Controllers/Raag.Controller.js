@@ -69,7 +69,7 @@ module.exports={
     const single_thatt=req.params.name
     try {
         const raag_thatt=await Raag.find({thaat:single_thatt}).exec();
-        if(!raag) return res.status(500).json({
+        if(!raag_thatt) return res.status(500).json({
             message:`Raag with ${single_thatt} thatt not Found`
         })
         res.send(raag_thatt)
