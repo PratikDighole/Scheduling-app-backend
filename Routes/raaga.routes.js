@@ -16,6 +16,15 @@ router.get('/:name',RaagController.GetSingleRaag)
 //route to get raag with particular thatt
 router.get('/thatt/:name',RaagController.GetRaagwithThatt)
 
+//route to get raag with particular vadi
+router.get('/vadi/:name',RaagController.GetRaagwithVadi)
+
+//route to get raag with particular samvadi
+router.get('/samvadi/:name',RaagController.GetRaagwithThatt)
+
+//route to get raag with particular time
+router.get('/time/:name',RaagController.GetRaagwithThatt)
+
 //route to update single Raag
 router.patch('/:name',RaagController.UpdateSingleRaag)
 

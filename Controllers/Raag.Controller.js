@@ -35,21 +35,6 @@ module.exports={
         message:"Unable to add raag in DB"
         })
     }
-    // console.log(req.body)
-    // const raag=new Raag({
-    //     name:req.body.name,
-    //     thaat:req.body.thaat,
-    //     vadi:req.body.vadi,
-    //     samvadi:req.body.samvadi,
-    //     time:req.body.time
-    // })
-    // raag.save()
-    // .then(result=>{
-    //     console.log(result)
-    //     res.send(result)
-    // })
-    // .catch(err=>console.log(err.message))
-   
 },
   GetSingleRaag:async(req,res)=>{
     const single_raag=req.params.name
@@ -68,11 +53,25 @@ module.exports={
  GetRaagwithThatt:async(req,res)=>{
     const single_thatt=req.params.name
     try {
-        const raag_thatt=await Raag.find({thaat:single_thatt}).exec();
+        const raag_thatt=await Raag.find({thaat:single_thatt});
         if(!raag_thatt) return res.status(500).json({
             message:`Raag with ${single_thatt} thatt not Found`
         })
         res.send(raag_thatt)
+    } catch (error) {
+        res.status(500).json({
+            message:"Unable to get raag from DB"
+        })
+    }
+},
+GetRaagwithVadi:async(req,res)=>{
+    const single_vadi=req.params.name
+    try {
+        const raag_vadi=await Raag.find({vadi:single_vadi});
+        if(!raag_vadi) return res.status(500).json({
+            message:`Raag with ${single_vadi} vadi not Found`
+        })
+        res.send(raag_vadi)
     } catch (error) {
         res.status(500).json({
             message:"Unable to get raag from DB"
