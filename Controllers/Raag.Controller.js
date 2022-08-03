@@ -78,7 +78,35 @@ GetRaagwithVadi:async(req,res)=>{
         })
     }
 },
-   UpdateSingleRaag:async(req,res)=>{
+GetRaagwithSamVadi:async(req,res)=>{
+    const single_samvadi=req.params.name
+    try {
+        const raag_samvadi=await Raag.find({samvadi:single_samvadi});
+        if(!raag_samvadi) return res.status(500).json({
+            message:`Raag with ${single_samvadi} samvadi not Found`
+        })
+        res.send(raag_samvadi)
+    } catch (error) {
+        res.status(500).json({
+            message:"Unable to get raag from DB"
+        })
+    }
+},
+GetRaagwithTime:async(req,res)=>{
+    const single_time=req.params.name
+    try {
+        const raag_time=await Raag.find({time:single_time});
+        if(!raag_time) return res.status(500).json({
+            message:`Raag with ${single_time} time not Found`
+        })
+        res.send(raag_time)
+    } catch (error) {
+        res.status(500).json({
+            message:"Unable to get raag from DB"
+        })
+    }
+},
+UpdateSingleRaag:async(req,res)=>{
    try{
     const update_name=req.params.name
     const updates=req.body
