@@ -3,6 +3,7 @@ const router=express.Router();
 const Raag=require('../Models/Product.model')
 const RaagController=require('../Controllers/Raag.Controller')
 
+
 //route to get all raagas
 router.get('/',RaagController.GetAllRaags) 
 
