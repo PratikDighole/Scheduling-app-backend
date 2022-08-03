@@ -65,6 +65,20 @@ module.exports={
         })
     }
 },
+ GetRaagwithThatt:async(req,res)=>{
+    const single_thatt=req.params.name
+    try {
+        const raag=await Raag.findOne({thaat:single_thatt})
+        if(!raag) return res.status(500).json({
+            message:"Raag with thatt not Found"
+        })
+        res.send(raag)
+    } catch (error) {
+        res.status(500).json({
+            message:"Unable to get raag from DB"
+        })
+    }
+},
    UpdateSingleRaag:async(req,res)=>{
    try{
     const update_name=req.params.name
