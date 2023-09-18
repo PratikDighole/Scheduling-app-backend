@@ -1,29 +1,32 @@
 const mongoose=require('mongoose')
 const Schema =mongoose.Schema
 
-const RaagSchema= new Schema ({
-     
-    name:{
+const TaskSchema= new Schema ({
+    ID:{
+        type:Number,
+        required:true
+    } ,
+    Title:{
        type:String,
        required:true 
     },
-    thaat:{
+    DayTime:{
         type:String,
         required:true
     },
-    vadi:{
+    Description:{
         type:String,
         required:true
     },
-    samvadi:{
+    Timestart:{
         type:String,
         required:true
     },
-    time:{
+    TimeEnd:{
         type:String,
         required:true
     }
 })
 
-const Raag=mongoose.model('raag',RaagSchema)
-module.exports=Raag;
+const Task=mongoose.model('raag',TaskSchema)
+module.exports=Task;

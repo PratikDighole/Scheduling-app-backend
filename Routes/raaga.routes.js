@@ -1,35 +1,40 @@
 const express=require('express')
 const router=express.Router();
-const Raag=require('../Models/Product.model')
+const Task=require('../Models/Product.model')
 const RaagController=require('../Controllers/Raag.Controller')
 
+// GET /tasks: Fetch all tasks.
+// • GET /tasks/:id: Fetch a single task by ID.
+// • POST /tasks: Add a new task.
+// • PUT /tasks/:id: Update a task by ID.
+// • DELETE /tasks/:id: Delete a task by ID.
 
-//route to get all raagas
-router.get('/',RaagController.GetAllRaags) 
+//route to get all tasks
+router.get('/tasks',async(req,res)=>{
+    try {
+        const results = await Task.find({}, { __v: 0 });
+        if(!results) return res.send("Task Not Found")
+        res.send(results)
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).json({
+            message:"Unable to get task in DB"
+        })
+    }
+}) 
 
-//route add new raag
-router.post('/',RaagController.AddRaag)
+//route add new task
+router.post('/task',RaagController.Addtask)
 
-//route to get single raag
-router.get('/:name',RaagController.GetSingleRaag)
+//Update a task by ID
+router.put('/tasks/:ID',RaagController.Updatetask)
 
-//route to get raag with particular thatt
-router.get('/thatt/:name',RaagController.GetRaagwithThatt)
+// route to get single task
+router.get('/tasks/:ID',RaagController.GetSingletask)
 
-//route to get raag with particular vadi
-router.get('/vadi/:name',RaagController.GetRaagwithVadi)
-
-//route to get raag with particular samvadi
-router.get('/samvadi/:name',RaagController.GetRaagwithSamVadi)
-
-//route to get raag with particular time
-router.get('/time/:name',RaagController.GetRaagwithTime)
-
-//route to update single Raag
-router.patch('/:name',RaagController.UpdateSingleRaag)
 
 //route to delete single raag
-router.delete('/:name',RaagController.DeleteSingleRaag)
+router.delete('/tasks/:ID',RaagController.Deletetask)
 
 module.exports=router;
 

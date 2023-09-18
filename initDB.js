@@ -1,11 +1,13 @@
 const mongoose=require('mongoose')
-
+const dotenv=require('dotenv').config()
+console.log('MongoDB URI:', process.env.MONGODB_URI);
 module.exports=()=>{
+    mongoose.set('strictQuery', false);
     mongoose.connect(process.env.MONGODB_URI,{
     
        dbName:process.env.DB_NAME,
-       user:process.env.DB_USER,
-       pass:process.env.DB_PASS,
+       user:'',
+       pass:'',
         useNewUrlParser:true,
         useUnifiedTopology:true
     }).then(()=>{
