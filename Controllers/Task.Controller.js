@@ -1,29 +1,6 @@
 const Task=require('../Models/Product.model')
 
 module.exports={
-//   GetAlltasks:async(req,res)=>{
-//     console.log("all")
-//     try {
-//         const results=await req.Task.find({},{__v:0})
-//         if(!results) return res.send("Raag Not Found")
-//         //find method has two parameters :query and projection
-//         //to get raag of kalyan thaat
-      
-//         // const results=await Raag.find({thaat:"kalyan"},{})
-        
-//        // to exclude and include we need to pass projecction in find
-//        //to  include only name of raag with kalyan Thaat
-//         // const results=await Raag.find({thaat:"kalyan"},{name:1})
-
-//         res.send(results)
-//     } catch (error) {
-//         console.log(error.message)
-//         res.status(500).json({
-//             message:"Unable to get raag in DB"
-//         })
-//     }
-// },
-  
   Addtask :async(req,res)=>{
       try{    
           const task=new Task(req.body)

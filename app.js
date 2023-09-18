@@ -1,6 +1,6 @@
 const express=require('express')
 const mongoose=require('mongoose')
-const RaagasRoutes=require('./Routes/raaga.routes')
+const TaskRoutes=require('./Routes/Task.routes')
 const createError=require('http-errors')
 require('dotenv').config()
 const app=express();
@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 })
 
 //for tasks route
-app.use('/',RaagasRoutes);
+app.use('/',TaskRoutes);
 
 app.use((req,res)=>{
   res.status(404).send("Error: Not Found")

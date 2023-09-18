@@ -1,7 +1,7 @@
 const express=require('express')
 const router=express.Router();
 const Task=require('../Models/Product.model')
-const RaagController=require('../Controllers/Raag.Controller')
+const TaskController=require('../Controllers/Task.Controller')
 
 // GET /tasks: Fetch all tasks.
 // • GET /tasks/:id: Fetch a single task by ID.
@@ -24,17 +24,17 @@ router.get('/tasks',async(req,res)=>{
 }) 
 
 //route add new task
-router.post('/task',RaagController.Addtask)
+router.post('/task',TaskController.Addtask)
 
 //Update a task by ID
-router.put('/tasks/:ID',RaagController.Updatetask)
+router.put('/tasks/:ID',TaskController.Updatetask)
 
 // route to get single task
-router.get('/tasks/:ID',RaagController.GetSingletask)
+router.get('/tasks/:ID',TaskController.GetSingletask)
 
 
-//route to delete single raag
-router.delete('/tasks/:ID',RaagController.Deletetask)
+//route to delete single task
+router.delete('/tasks/:ID',TaskController.Deletetask)
 
 module.exports=router;
 
